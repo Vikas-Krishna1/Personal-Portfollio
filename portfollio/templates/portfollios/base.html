@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+  .element-class {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
+  <meta charset="utf-8">
+  <title>Vikas Krishna's Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top" padding-left: 120px;>
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">Vikas Krishna</a>
+
+    <div class="collapse navbar-collapse" padding-left: 120px;>
+      <ul class="navbar-nav d-flex flex-row gap-3 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+
+        <li class="nav-item">
+          <a class="btn btn-outline-primary btn-sm"
+             href="{% static 'portfollio/Vikas Krishna- resume.docx (6).pdf' %}"
+             target="_blank">
+            Resume
+          </a>
+        </li>
+      </ul>
+      <li class="nav-item">
+  <div class="d-flex gap-2"> <!-- Adds spacing between buttons -->
+    <a class="btn btn-dark btn-sm"
+       href="https://www.linkedin.com/in/vikas-krishna-9b5b862a5/"
+       target="_blank">
+      LinkedIn
+    </a>
+    <a class="btn btn-dark btn-sm"
+       href="https://www.instagram.com/yourusername/"
+       target="_blank">
+      Instagram
+    </a>
+  </div>
+</li>
+    </div>
+  </div>
+</nav>
+
+<div class="container pt-5 mt-4">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

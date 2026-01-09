@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+{% load static %}
+
+<h2>{{blog.title}}</h2>
+<p>{{blog.pub_date | date:'F jS, Y' }}</p>
+<p>{{blog.body|safe}}</p>
+</html>
