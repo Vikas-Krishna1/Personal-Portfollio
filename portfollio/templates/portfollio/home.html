@@ -1,4 +1,46 @@
 {% extends "portfollio/base.html" %} {% load static %} {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('skillsChart');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [
+            'Python',
+            'Java',
+            'JavaScript',
+            'TypeScript',
+            'Swift',
+            'SQL'
+        ],
+        datasets: [{
+            data: [25, 15, 20, 10, 20, 10],
+            backgroundColor: [
+                '#4CAF50',
+                '#FF9800',
+                '#2196F3',
+                '#9C27B0',
+                '#00BCD4',
+                '#FFC107'
+            ]
+        }]
+    },
+    options:{
+        plugins:{
+            legend:{
+                labels:{
+                    color:"white"
+                }
+            }
+        }
+    }
+
+});
+
+</script>
 <style>
   body {
     background-color: #0a192f;
@@ -123,71 +165,87 @@
 
   </div>
 </section>
-<section class="skills-section container mt-5">
+<section class="skills-section container">
 
-    <h2 class="text-center mb-4">Technical Skills</h2>
+<h2>Technical Skills</h2>
 
-    <div class="row">
+<div class="skills-grid">
 
-        <!-- LEFT SIDE: SKILL BARS -->
-        <div class="col-md-6">
+<div>
 
-            <h4>Languages</h4>
+<h3>Languages</h3>
 
-            <div class="skill">
-                <span>Python</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:90%"></div>
-                </div>
-            </div>
+<div class="skill"><span>Python</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
 
-            <div class="skill">
-                <span>Java</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:80%"></div>
-                </div>
-            </div>
+<div class="skill"><span>Java</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
 
-            <div class="skill">
-                <span>JavaScript</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:85%"></div>
-                </div>
-            </div>
+<div class="skill"><span>JavaScript</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
 
-            <div class="skill">
-                <span>TypeScript</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:75%"></div>
-                </div>
-            </div>
+<div class="skill"><span>TypeScript</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
 
-            <div class="skill">
-                <span>Swift</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:85%"></div>
-                </div>
-            </div>
+<div class="skill"><span>Swift</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
 
-            <div class="skill">
-                <span>SQL</span>
-                <div class="skill-bar">
-                    <div class="skill-fill" style="width:80%"></div>
-                </div>
-            </div>
+<div class="skill"><span>SQL</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
 
-        </div>
+</div>
 
-        <!-- RIGHT SIDE: PIE CHART -->
-        <div class="col-md-6 text-center">
 
-            <h4>Language Distribution</h4>
+<div>
 
-            <canvas id="skillsChart"></canvas>
+<h3>Frameworks / Libraries</h3>
 
-        </div>
+<div class="skill"><span>React</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
 
-    </div>
+<div class="skill"><span>Next.js</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>FastAPI</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Django</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Node.js</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Express</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>SwiftUI</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+
+</div>
+
+
+<div>
+
+<h3>Databases</h3>
+
+<div class="skill"><span>MongoDB</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>SQLite</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>CoreData</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+
+</div>
+
+
+<div>
+
+<h3>Tools & Platforms</h3>
+
+<div class="skill"><span>Docker</span><div class="skill-bar"><div style="width:70%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Git</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>GitHub</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Vercel</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+
+<div class="skill"><span>Render</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+
+</div>
+
+</div>
+
+<div class="chart-container">
+<h3>Language Distribution</h3>
+<canvas id="skillsChart"></canvas>
+</div>
 
 </section>
 
