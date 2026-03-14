@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", ".onrender.com"]
+ALLOWED_HOSTS = ["*", ".onrender.com","personal-portfollio-9tfl.onrender.com"]
 
 
 # Application definition
