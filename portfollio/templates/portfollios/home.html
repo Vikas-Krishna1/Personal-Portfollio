@@ -1,32 +1,101 @@
 {% extends "portfollios/base.html" %} {% load static %} {% block content %}
+<style>
+  body {
+    background-color: #0a192f;
+    color: #ccd6f6;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+}
+
+.hero-section{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-intro{
+    color:#64ffda;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.hero-title{
+    font-size:64px;
+    font-weight:700;
+    color:#ccd6f6;
+}
+
+.hero-subtitle{
+    font-size:48px;
+    color:#8892b0;
+    margin-bottom:20px;
+}
+
+.hero-description{
+    max-width:600px;
+    color:#8892b0;
+    font-size:18px;
+}
+
+.hero-buttons a{
+    margin-right:15px;
+}
+
+.navbar{
+    background:#0a192f !important;
+    border:none !important;
+}
+
+.card{
+    background:#112240;
+    color:#ccd6f6;
+}
+
+.card-title{
+    color:#64ffda;
+}
+</style>
 
 <!-- ================= HERO ================= -->
-<section class="py-5">
+<section class="hero-section d-flex align-items-center">
   <div class="container">
-    <h1 class="display-5 fw-bold mb-3">Vikas Krishna</h1>
 
-    <p class="lead text-muted mb-4">
-      Computer Science student at Stony Brook University focused on backend
-      systems, full-stack development, and full-stack development.
+    <p class="hero-intro">Hello, my name is</p>
+
+    <h1 class="hero-title">
+      Vikas Krishna.
+    </h1>
+
+    <h2 class="hero-subtitle">
+      I build full-stack software and backend systems.
+    </h2>
+
+    <p class="hero-description">
+      Computer Science student at Stony Brook University focused on 
+      scalable backend systems, APIs, and modern full-stack applications.
     </p>
 
-    <div class="d-flex flex-wrap gap-3">
-      <a
-        href="{% static 'portfollio/Vikas Krishna- resume.docx (10).pdf' %}"
-        class="btn btn-dark"
-        target="_blank"
-      >
-        Download Resume
+    <div class="hero-buttons mt-4">
+
+      <a href="{% static 'portfollio/Vikas Krishna- resume.docx (10).pdf' %}"
+         class="btn btn-outline-light"
+         target="_blank">
+         Resume
       </a>
 
-      <a
-        href="https://github.com/Vikas-Krishna1"
-        class="btn btn-outline-dark"
-        target="_blank"
-      >
-        GitHub
+      <a href="https://github.com/Vikas-Krishna1"
+         class="btn btn-primary"
+         target="_blank">
+         GitHub
       </a>
+
+      <a href="https://www.linkedin.com/in/vikas-krishna-9b5b862a5/"
+         class="btn btn-outline-info"
+         target="_blank">
+         LinkedIn
+      </a>
+
     </div>
+
   </div>
 </section>
 
@@ -39,46 +108,41 @@
 
     <div class="row g-4">
       {% for project in projects %}
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 border-0 shadow-sm">
-          {% if project.image %}
-          <img
-            src="{{ project.image.url }}"
-            class="card-img-top"
-            alt="{{ project.title }}"
-          />
-          {% endif %}
+     <div class="card h-100 shadow border-0">
 
-          <div class="card-body">
-            <h5 class="card-title">{{ project.title }}</h5>
+    {% if project.image %}
+    <img src="{{ project.image.url }}" class="card-img-top">
+    {% endif %}
 
-            <p class="card-text text-muted">
-              {{ project.description|truncatechars:120 }}
-            </p>
+    <div class="card-body">
 
-            <div class="d-flex gap-2 mt-3">
-              <a
-                href="{% url 'project_detail' project.id %}"
-                class="btn btn-outline-primary btn-sm"
-              >
-                View Details
-              </a>
+        <h5 class="card-title">
+            {{ project.title }}
+        </h5>
 
-              {% if project.url %}
-              <a
-                href="{{ project.url }}"
-                target="_blank"
-                class="btn btn-dark btn-sm"
-              >
-                GitHub
-              </a>
-              {% endif %}
-            </div>
-          </div>
+        <p class="card-text">
+            {{ project.description|truncatechars:120 }}
+        </p>
+
+        <div class="mt-3">
+
+            <a href="{% url 'project_detail' project.id %}"
+               class="btn btn-outline-light btn-sm">
+               Details
+            </a>
+
+            {% if project.url %}
+            <a href="{{ project.url }}"
+               target="_blank"
+               class="btn btn-primary btn-sm">
+               GitHub
+            </a>
+            {% endif %}
+
         </div>
-      </div>
-      {% empty %}
-      <p class="text-muted">No projects yet.</p>
+
+    </div>
+</div>
       {% endfor %}
     </div>
   </div>
