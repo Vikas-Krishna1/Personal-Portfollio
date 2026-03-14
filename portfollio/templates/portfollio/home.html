@@ -53,6 +53,31 @@
 .card-title{
     color:#64ffda;
 }
+.skills-section{
+    margin-top:80px;
+}
+
+.skill{
+    margin-bottom:20px;
+}
+
+.skill span{
+    font-weight:600;
+}
+
+.skill-bar{
+    width:100%;
+    background:#1a1a1a;
+    border-radius:10px;
+    overflow:hidden;
+    height:10px;
+}
+
+.skill-fill{
+    height:10px;
+    background:#64ffda;
+    border-radius:10px;
+}
 </style>
 
 <!-- ================= HERO ================= -->
@@ -97,6 +122,73 @@
     </div>
 
   </div>
+</section>
+<section class="skills-section container mt-5">
+
+    <h2 class="text-center mb-4">Technical Skills</h2>
+
+    <div class="row">
+
+        <!-- LEFT SIDE: SKILL BARS -->
+        <div class="col-md-6">
+
+            <h4>Languages</h4>
+
+            <div class="skill">
+                <span>Python</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:90%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span>Java</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:80%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span>TypeScript</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:75%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span>Swift</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span>SQL</span>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:80%"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: PIE CHART -->
+        <div class="col-md-6 text-center">
+
+            <h4>Language Distribution</h4>
+
+            <canvas id="skillsChart"></canvas>
+
+        </div>
+
+    </div>
+
 </section>
 
 <!-- ================= PROJECTS ================= -->
