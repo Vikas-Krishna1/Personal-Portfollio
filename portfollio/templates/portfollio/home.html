@@ -1,194 +1,315 @@
-{% extends "portfollio/base.html" %} {% load static %} {% block content %}
+{% extends "portfollio/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- LIBRARIES -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 <script>
+
 document.addEventListener("DOMContentLoaded", function(){
 
-const ctx = document.getElementById('skillsChart');
+/* ================= TYPING HERO ================= */
 
-if (ctx) {
-new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [
-            'Python',
-            'Java',
-            'JavaScript',
-            'TypeScript',
-            'Swift',
-            'SQL'
-        ],
-        datasets: [{
-            data: [25, 15, 20, 10, 20, 10],
-            backgroundColor: [
-                '#4CAF50',
-                '#FF9800',
-                '#2196F3',
-                '#9C27B0',
-                '#00BCD4',
-                '#FFC107'
-            ]
-        }]
-    },
-    options:{
-        plugins:{
-            legend:{
-                labels:{
-                    color:"#ccd6f6"
-                }
-            }
-        }
-    }
+new Typed("#typing", {
+strings: [
+"full-stack software",
+"backend systems",
+"scalable APIs",
+"modern web applications"
+],
+typeSpeed: 60,
+backSpeed: 40,
+loop: true
+});
+
+
+/* ================= SKILL BAR ANIMATION ================= */
+
+const bars = document.querySelectorAll(".skill-fill");
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+
+const width = entry.target.dataset.width;
+entry.target.style.width = width;
+
+}
+});
+});
+
+bars.forEach(bar=>{
+observer.observe(bar);
+});
+
+
+/* ================= CHARTS ================= */
+
+const langCtx = document.getElementById("languagesChart");
+
+if(langCtx){
+new Chart(langCtx,{
+type:"pie",
+data:{
+labels:["Python","Java","JavaScript","TypeScript","Swift","SQL"],
+datasets:[{
+data:[25,15,20,10,20,10],
+backgroundColor:[
+"#4CAF50",
+"#FF9800",
+"#2196F3",
+"#9C27B0",
+"#00BCD4",
+"#FFC107"
+]
+}]
+},
+options:{
+plugins:{
+legend:{labels:{color:"#ccd6f6"}}
+}
+}
+});
+}
+
+
+const frameworkCtx = document.getElementById("frameworkChart");
+
+if(frameworkCtx){
+new Chart(frameworkCtx,{
+type:"pie",
+data:{
+labels:["React","Next.js","FastAPI","Django","Node","Express","SwiftUI"],
+datasets:[{
+data:[20,10,15,20,15,10,10],
+backgroundColor:[
+"#61dafb",
+"#000",
+"#009688",
+"#092e20",
+"#8bc34a",
+"#ff5722",
+"#ff4081"
+]
+}]
+},
+options:{
+plugins:{legend:{labels:{color:"#ccd6f6"}}}
+}
+});
+}
+
+
+const toolsCtx = document.getElementById("toolsChart");
+
+if(toolsCtx){
+new Chart(toolsCtx,{
+type:"pie",
+data:{
+labels:["Docker","Git","GitHub","Vercel","Render"],
+datasets:[{
+data:[15,25,25,20,15],
+backgroundColor:[
+"#0db7ed",
+"#f1502f",
+"#24292e",
+"#000",
+"#46e3b7"
+]
+}]
+},
+options:{
+plugins:{legend:{labels:{color:"#ccd6f6"}}}
+}
 });
 }
 
 });
+
 </script>
+
+
 <style>
-  body {
-    background-color: #0a192f;
-    color: #ccd6f6;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+
+/* GLOBAL */
+
+html{
+scroll-behavior:smooth;
 }
+
+body{
+background:#0a192f;
+color:#ccd6f6;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+}
+
+
+/* HERO */
 
 .hero-section{
-    min-height:90vh;
-    display:flex;
-    align-items:center;
-}
-
-.hero-intro{
-    color:#64ffda;
-    font-size:18px;
-    margin-bottom:10px;
+min-height:90vh;
+display:flex;
+align-items:center;
 }
 
 .hero-title{
-    font-size:64px;
-    font-weight:700;
-    color:#ccd6f6;
+font-size:64px;
+font-weight:700;
 }
 
 .hero-subtitle{
-    font-size:48px;
-    color:#8892b0;
-    margin-bottom:20px;
+font-size:40px;
+color:#8892b0;
 }
 
-.hero-description{
-    max-width:600px;
-    color:#8892b0;
-    font-size:18px;
-}
 
-.hero-buttons a{
-    margin-right:15px;
-}
-
-.navbar{
-    background:#0a192f !important;
-    border:none !important;
-}
+/* GLASS CARDS */
 
 .card{
-    background:#112240;
-    color:#ccd6f6;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:14px;
+transition:all .3s ease;
 }
 
-.card-title{
-    color:#64ffda;
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
+
+
+/* SKILLS */
+
 .skills-section{
-    margin-top:80px;
+margin-top:80px;
 }
 
-.skill{
-    margin-bottom:20px;
-}
-
-.skill span{
-    font-weight:600;
-}
-
-.skill-bar{
-    width:100%;
-    background:#1a1a1a;
-    border-radius:10px;
-    overflow:hidden;
-    height:10px;
-}
-
-.skill-fill{
-    height:10px;
-    background:#64ffda;
-    border-radius:10px;
-}
-.project-image{
-    width:250px;
-    height:150px;
-    object-fit:cover;
-    border-radius:8px;
-}
-.chart-container{
-    width:350px;
-    margin-top:40px;
-}
-
-#skillsChart{
-    width:100%;
-    height:350px;
-}
 .skills-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:40px;
-margin-top:40px;
 }
+
+.skill{
+margin-bottom:18px;
+}
+
+.skill-bar{
+background:#1a1a1a;
+height:10px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.skill-fill{
+height:10px;
+background:#64ffda;
+width:0;
+transition:width 2s ease;
+}
+
+
+/* CHARTS */
+
+.charts-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:50px;
+}
+
+.chart-container{
+background:#112240;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+.chart-container canvas{
+max-width:250px;
+margin:auto;
+}
+
+
+/* PROJECTS */
+
+.project-image{
+width:100%;
+height:170px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+
+/* SCROLL ANIMATION */
+
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.fade-up.visible{
+opacity:1;
+transform:translateY(0);
+}
+
 </style>
 
-<!-- ================= HERO ================= -->
-<section class="hero-section d-flex align-items-center">
-  <div class="container">
 
-    <p class="hero-intro">Hello, my name is</p>
+<!-- HERO -->
 
-    <h1 class="hero-title">
-      Vikas Krishna.
-    </h1>
+<section class="hero-section container">
 
-    <h2 class="hero-subtitle">
-      I build full-stack software and backend systems.
-    </h2>
+<div>
 
-    <p class="hero-description">
-      Computer Science student at Stony Brook University focused on 
-      scalable backend systems, APIs, and modern full-stack applications.
-    </p>
+<p style="color:#64ffda;">Hello, my name is</p>
 
-    <div class="hero-buttons mt-4">
+<h1 class="hero-title">
+Vikas Krishna
+</h1>
 
-      <a href="{% static 'portfollio/Vikas Krishna- resume.docx (10).pdf' %}"
-         class="btn btn-outline-light"
-         target="_blank">
-         Resume
-      </a>
+<h2 class="hero-subtitle">
+I build <span id="typing"></span>
+</h2>
 
-      <a href="https://github.com/Vikas-Krishna1"
-         class="btn btn-primary"
-         target="_blank">
-         GitHub
-      </a>
+<p style="max-width:600px;color:#8892b0;">
+Computer Science student at
+Stony Brook University building scalable backend systems,
+APIs, and modern full-stack applications.
+</p>
 
-      <a href="https://www.linkedin.com/in/vikas-krishna-9b5b862a5/"
-         class="btn btn-outline-info"
-         target="_blank">
-         LinkedIn
-      </a>
+<div class="mt-4">
 
-    </div>
+<a href="{% static 'portfollio/Vikas Krishna- resume.docx (13).pdf' %}"
+class="btn btn-outline-light" target="_blank">
+Resume
+</a>
 
-  </div>
+<a href="https://github.com/Vikas-Krishna1"
+class="btn btn-primary" target="_blank">
+GitHub
+</a>
+
+<a href="https://www.linkedin.com/in/vikas-krishna-9b5b862a5/"
+class="btn btn-outline-info" target="_blank">
+LinkedIn
+</a>
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- SKILLS -->
+
 <section class="skills-section container">
 
 <h2>Technical Skills</h2>
@@ -199,38 +320,27 @@ margin-top:40px;
 
 <h3>Languages</h3>
 
-<div class="skill"><span>Python</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Java</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>JavaScript</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>TypeScript</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Swift</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>SQL</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+<div class="skill">Python<div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
+<div class="skill">Java<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
+<div class="skill">JavaScript<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+<div class="skill">TypeScript<div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div></div>
+<div class="skill">Swift<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+<div class="skill">SQL<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
 
 </div>
 
 
 <div>
 
-<h3>Frameworks / Libraries</h3>
+<h3>Frameworks</h3>
 
-<div class="skill"><span>React</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Next.js</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>FastAPI</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Django</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Node.js</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Express</span><div class="skill-bar"><div style="width:75%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>SwiftUI</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+<div class="skill">React<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+<div class="skill">Next.js<div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div></div>
+<div class="skill">FastAPI<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
+<div class="skill">Django<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+<div class="skill">Node<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
+<div class="skill">Express<div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div></div>
+<div class="skill">SwiftUI<div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
 
 </div>
 
@@ -239,97 +349,101 @@ margin-top:40px;
 
 <h3>Databases</h3>
 
-<div class="skill"><span>MongoDB</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
+<div class="skill">MongoDB<div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div></div>
+<div class="skill">SQLite<div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div></div>
+<div class="skill">CoreData<div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
 
-<div class="skill"><span>SQLite</span><div class="skill-bar"><div style="width:85%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>CoreData</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
+</div>
 
 </div>
 
 
-<div>
+<div class="charts-grid">
 
-<h3>Tools & Platforms</h3>
-
-<div class="skill"><span>Docker</span><div class="skill-bar"><div style="width:70%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Git</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>GitHub</span><div class="skill-bar"><div style="width:90%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Vercel</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
-
-<div class="skill"><span>Render</span><div class="skill-bar"><div style="width:80%" class="skill-fill"></div></div></div>
-
-</div>
-
+<div class="chart-container">
+<h4>Languages</h4>
+<canvas id="languagesChart"></canvas>
 </div>
 
 <div class="chart-container">
-<h3>Language Distribution</h3>
-<canvas id="skillsChart"></canvas>
+<h4>Frameworks</h4>
+<canvas id="frameworkChart"></canvas>
+</div>
+
+<div class="chart-container">
+<h4>Tools</h4>
+<canvas id="toolsChart"></canvas>
+</div>
+
 </div>
 
 </section>
 
-<!-- ================= PROJECTS ================= -->
-<section class="py-5 bg-light">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="fw-semibold">Projects</h2>
-    </div>
 
-    <div class="row g-4">
-      {% for project in projects %}
-     <div class="card h-100 shadow border-0">
 
-    {% if project.image %}
-   <img src="{{ project.image.url }}" class="project-image">
-    {% endif %}
+<!-- GITHUB CONTRIBUTION GRAPH -->
 
-    <div class="card-body">
+<section class="container py-5">
 
-        <h5 class="card-title">
-            {{ project.title }}
-        </h5>
+<h2>GitHub Activity</h2>
 
-        <p class="card-text">
-            {{ project.description|truncatechars:120 }}
-        </p>
+<img
+src="https://ghchart.rshah.org/409ba5/Vikas-Krishna1"
+style="width:100%;margin-top:20px;"
+/>
 
-        <div class="mt-3">
+</section>
 
-            <a href="{% url 'project_detail' project.id %}"
-               class="btn btn-outline-light btn-sm">
-               Details
-            </a>
 
-            {% if project.url %}
-            <a href="{{ project.url }}"
-               target="_blank"
-               class="btn btn-primary btn-sm">
-               GitHub
-            </a>
-            {% endif %}
 
-        </div>
+<!-- PROJECTS -->
 
-    </div>
+<section class="container py-5">
+
+<h2>Projects</h2>
+
+<div class="row g-4">
+
+{% for project in projects %}
+
+<div class="col-md-4">
+
+<div class="card h-100">
+
+{% if project.image %}
+<img src="{{ project.image.url }}" class="project-image">
+{% endif %}
+
+<div class="card-body">
+
+<h5>{{ project.title }}</h5>
+
+<p>{{ project.description|truncatechars:120 }}</p>
+
+<a href="{% url 'project_detail' project.id %}"
+class="btn btn-outline-light btn-sm">
+Details
+</a>
+
+{% if project.url %}
+<a href="{{ project.url }}" target="_blank"
+class="btn btn-primary btn-sm">
+GitHub
+</a>
+{% endif %}
+
 </div>
-      {% endfor %}
-    </div>
-  </div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
 </section>
 
-<!-- ================= CTA ================= -->
-<section class="py-5">
-  <div class="container text-center">
-    <h3 class="fw-semibold mb-3">Writing about systems & software</h3>
-    <p class="text-muted mb-4">
-      I document what I learn while building projects.
-    </p>
-  </div>
-</section>
+
 
 {% endblock %}
