@@ -1,0 +1,107 @@
+# =========================
+
+# Python / Django
+
+# =========================
+
+**pycache**/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+*.log
+
+# Django static & media
+
+/staticfiles/
+/media/
+
+# Migrations (optional: keep if working in team)
+
+# */migrations/*
+
+# !*/migrations/**init**.py
+
+# =========================
+
+# Virtual Environments
+
+# =========================
+
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+
+# Environment Variables
+
+# =========================
+
+.env
+.env.*
+*.env
+
+# =========================
+
+# Node / Frontend (React, Vite)
+
+# =========================
+
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# =========================
+
+# MacOS
+
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+
+# VS Code / IDEs
+
+# =========================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+
+# Logs & Debug
+
+# =========================
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+
+# Coverage / Testing
+
+# =========================
+
+.coverage
+coverage/
+htmlcov/
+
+# =========================
+
+# Misc
+
+# =========================
+
+*.bak
+*.tmp
+*.swp
+*~
