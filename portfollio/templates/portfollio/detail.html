@@ -16,15 +16,16 @@
          alt="{{ project.title }}">
     {% endif %}
 
-    <p class="lead text-muted">
-      {{ project.description }}
-    </p>
+    <!-- Structured Description -->
+    <div class="project-description text-muted">
+      {{ project.description|linebreaks }}
+    </div>
 
     {% if project.url %}
     <a href="{{ project.url }}"
        target="_blank"
-       class="btn btn-dark mt-3">
-      View GitHub Repository
+       class="btn btn-dark mt-4">
+      View Project
     </a>
     {% endif %}
 
